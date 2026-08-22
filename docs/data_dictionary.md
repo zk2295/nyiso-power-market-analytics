@@ -64,6 +64,30 @@ The initial project will use only the following datasets:
 
 The project will add real-time LBMP only after validating hourly aggregation and timestamp alignment. It will add load forecasts, fuel mix, weather, ancillary-service prices, and public outage data only after documenting their availability, timing, and limitations.
 
+## Initial Validation Results
+
+### Day-Ahead LBMP
+
+- Successfully compiled public day-ahead LBMP CSV files into one local dataset.
+- Initial combined price-data coverage: Jan. 1, 2025 through Aug. 22, 2026.
+- Confirmed that the public location label `N.Y.C.` represents the initial Zone J analysis location.
+- The dataset includes hourly timestamps, location names, PTIDs, total LBMP, marginal-loss component, and marginal-congestion component.
+- Zone G has not yet been added to the analysis.
+
+### Actual Load
+
+- Successfully compiled public load CSV files into one local dataset.
+- Initial load-data coverage: Jan. 1, 2026 through Aug. 21, 2026.
+- Source files are in daily wide format with `Year`, `Month`, `Day`, and hourly load fields `Hr1`–`Hr24`.
+- The source also contains `Hr25`, which is not included in the initial analysis pending documented daylight-saving-time treatment.
+- The initial load dataset was reshaped into hourly observations using timestamps from the daily date fields and the hourly columns.
+
+### Initial Overlap
+
+- The initial Zone J day-ahead LBMP and NYCA actual-load datasets have 233 overlapping calendar dates.
+- The overlapping period is Jan. 1, 2026 through Aug. 21, 2026.
+- The project will validate duplicate timestamps, missing hours, time conventions, and daylight-saving-time treatment before using the merged data for forecasting or statistical inference.
+
 
 
 \## Data Quality Checks Required Before Analysis
